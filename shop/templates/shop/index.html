@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <div class="row">
+    {% for product in products %}
+    <div class="col-md-3">
+      <div class="card mb-4">
+        <img
+          src="{{ product.image_url }}"
+          alt="{{ product.title }}"
+          class="card-img-top img-fluid"
+        />
+        <div class="card-body">
+          <h4 class="card-title">{{ product.title }}</h4>
+          <p class="card-text">{{ product.category }}</p>
+          <p class="card-text">{{ product.name }}</p>
+          <p class="card-text">{{ product.description }}</p>
+          {% if product.discount_price %}
+          <p class="card-text">
+            <span class="text-muted"><del>{{ product.price }}</del></span>
+            <strong>{{ product.discount_price }}</strong>
+          </p>
+          {% else %}
+          <p class="card-text"><strong>{{ product.price }}</strong></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

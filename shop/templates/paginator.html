@@ -1,0 +1,19 @@
+<br />
+<div class="conatiner text-center text-dark float-center">
+  {% if products.has_previous %} <br />
+  <a
+    href="?page={{ products.previous_page_number }}{% if q %}&q={{ q }}{% endif %}"
+    class="pagination"
+    >Previous</a
+  >
+  <br />
+  {% endif %} <br />
+  Page: {{ products.number }} of {{ products.paginator.num_pages }} <br />
+  {% if products.has_next %}
+  <a
+    href="?page={{ products.next_page_number }}{% if q %}&q={{ q }}{% endif %}"
+    class="pagination"
+    >Next</a
+  >
+  {% endif %} <br />
+</div>

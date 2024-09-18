@@ -11,7 +11,9 @@ class Product(models.Model):
     )
     category = models.CharField(max_length=255)
     description = models.TextField()
-    image_url = models.CharField(max_length=2083)
+    image_url = models.ImageField(
+        upload_to="product_images/", default="product_images/default.png"
+    )
 
     def clean(self):
         if self.discount_price and self.discount_price >= self.price:

@@ -1,19 +1,43 @@
-<br />
-<div class="conatiner text-center text-dark float-center">
-  {% if products.has_previous %} <br />
-  <a
-    href="?page={{ products.previous_page_number }}{% if q %}&q={{ q }}{% endif %}"
-    class="pagination"
-    >Previous</a
+<div
+  class="container text-center text-dark d-flex justify-content-center align-items-center"
+>
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      {% if products.has_previous %}
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="?page={{ products.previous_page_number }}{% if q %}&q={{ q }}{% endif %}"
+          aria-label="Previous"
+        >
+          <span aria-hidden="true">&laquo; Previous</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">&laquo; Previous</span>
+      </li>
+      {% endif %} {% if products.has_next %}
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="?page={{ products.next_page_number }}{% if q %}&q={{ q }}{% endif %}"
+          aria-label="Next"
+        >
+          <span aria-hidden="true">Next &raquo;</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">Next &raquo;</span>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <span class="mx-3"
+    >Page {{ products.number }} of {{ products.paginator.num_pages }}</span
   >
-  <br />
-  {% endif %} <br />
-  Page: {{ products.number }} of {{ products.paginator.num_pages }} <br />
-  {% if products.has_next %}
-  <a
-    href="?page={{ products.next_page_number }}{% if q %}&q={{ q }}{% endif %}"
-    class="pagination"
-    >Next</a
-  >
-  {% endif %} <br />
 </div>
+
+<!--Pagelink is Bootstrap class that makes it look like button-->

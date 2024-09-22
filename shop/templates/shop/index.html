@@ -40,9 +40,9 @@
         />
         <div class="card-body">
           <h4 class="card-title">{{ product.title }}</h4>
-          <p class="card-text">Category: {{ product.category }}</p>
+          <!--<p class="card-text">Category: {{ product.category }}</p>-->
 
-          <p class="card-text">{{ product.description }}</p>
+          <!---  <p class="card-text">{{ product.description }}</p>-->
           {% if product.discount_price %}
           <p class="card-text">
             <span class="text-muted"
@@ -54,10 +54,24 @@
           <p class="card-text"><strong>{{ product.price }}</strong></p>
           {% endif %}
         </div>
+
+        <div class="card-footer">
+          <a
+            href="{% url 'product_detail' product.id %}"
+            class="btn btn-warning btn-sm"
+            >View</a
+          >
+
+          <a href="#" class="btn btn-warning btn-sm">Add to cart</a>
+        </div>
       </div>
     </div>
+
     {% endfor %}
   </div>
+
+  <!--Pagination-->
+  {% include 'paginator.html' %}
 </div>
-{% include 'paginator.html' %} <br />
+
 {% endblock %}

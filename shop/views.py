@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product
-#from django.views.generic import ListView  # new
+
+# from django.views.generic import ListView  # new
 from django.core.paginator import Paginator
 
 
@@ -24,16 +25,12 @@ def index(request):
             | products.filter(description__icontains=q)
             | products.filter(category__icontains=q)
         )
-        
-        
-    #Paginator
+
+    # Paginator
     pagiantor = Paginator(products, 3)
     page = request.GET.get("page")
     products = pagiantor.get_page(page)
-    context = {
-    "products": products,
-    "q": q
-}
+    context = {"products": products, "q": q}
     return render(request, "shop/index.html", context)
 
 

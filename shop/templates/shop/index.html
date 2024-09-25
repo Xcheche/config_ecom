@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} <br />
+{% load static %} <br />
+{% block content %}
 
 <div class="container mt-5">
   <!--Search button-->
@@ -62,7 +64,12 @@
             >View</a
           >
 
-          <a href="#" class="btn btn-warning btn-sm">Add to cart</a>
+          <button
+            id="{{ product.id }}"
+            class="btn btn-warning btn-sm add_to_cart"
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

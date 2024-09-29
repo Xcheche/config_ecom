@@ -1,3 +1,7 @@
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});
+
 // checking if cart is empty
 if (localStorage.getItem("card") == null) {
   let cart = {};
